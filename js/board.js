@@ -173,7 +173,9 @@ $(document).ready(function(){
 
   /* Search Filter Logic */
   $quotes = $('#board-list li');
-  $('#search input').keyup(function(){
+  $('#search input').keyup(updateBoard);
+
+  function updateBoard() {
     var val = '^(?=.*\\b' + $.trim($(this).val().replace(/\*/g,'\\*')).split(/;*\/*<*>*=*\.*:*-*,*!*\&*\'*\s+/).join('\\b)(?=.*\\b') + ').*$';
     val = val.replace(/\\b\\\*/g, '\\B\\*');
     val = val.replace(/\\b\\\:/g, '\\B\\:');
@@ -182,29 +184,38 @@ $(document).ready(function(){
     var reg = RegExp(val.replace(/\\b\\\*/g, '\\B\\*'), 'i');
     var text;
 
-  console.log('val: ' + val.replace(/\\b\\\*/g, '\\B\\*'));
+  // console.log('val: ' + val.replace(/\\b\\\*/g, '\\B\\*'));
+      index.search($(this).val(), function(err, content){
+        console.group('algoliaSearch')
+        console.log('Algolia Search Results');
+        console.time('Algolia Search Time');
+        console.table(content.hits);
+        console.timeEnd('Algolia Search Time');
+        console.groupEnd('algoliaSearch');
+      });
+
       $quotes.show().filter(function() {
           text = $(this).text().replace(/\s+/g, ' ');
           return !reg.test(text);
       }).hide();
-  });
+  }
 
   /* Code for AutoComplete */
-  var ac = new autoComplete({
-      selector: 'input[name="search"]',
-      minChars: 1,
-      source: function(term, suggest){
-          term = term.toLowerCase();
-          var choices = quotesAndChars;
-          var matches = [];
-          for (i=0; i<choices.length; i++)
-              if (~choices[i].toLowerCase().indexOf(term)) matches.push(/*"\"" + */choices[i]/*.toUpperCase() + "\""*/);
-          suggest(matches);
-      },
-      onSelect: function(e, term, item){
-        $('#search input').keyup();
-      }
-  });
+  // var ac = new autoComplete({
+  //     selector: 'input[name="search"]',
+  //     minChars: 1,
+  //     source: function(term, suggest){
+  //         term = term.toLowerCase();
+  //         var choices = quotesAndChars;
+  //         var matches = [];
+  //         for (i=0; i<choices.length; i++)
+  //             if (~choices[i].toLowerCase().indexOf(term)) matches.push(/*"\"" + */choices[i]/*.toUpperCase() + "\""*/);
+  //         suggest(matches);
+  //     },
+  //     onSelect: function(e, term, item){
+  //       $('#search input').keyup();
+  //     }
+  // });
 
 
   /* Mobile Logic */

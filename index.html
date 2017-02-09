@@ -53,7 +53,7 @@
     </div>
     <div id="filters">
       <div id="search">
-        <input name="search" type="text" placeholder="Search quotes"/><div id="search-clear">
+        <input id="search-input" name="search" type="text" placeholder="Search quotes"/><div id="search-clear">
           <i class="fa fa-times"></i>
         </div>
       </div>
@@ -84,7 +84,7 @@
       </p>
       <p>
         with a little help from my friends: <br/>
-        <a class="yellow-highlight" href="https://github.com/Pixabay/JavaScript-autoComplete" target="_blank">autoComplete</a>, <a class="yellow-highlight" href="https://twitter.com/Mega64_Quotes" target="_blank">Mega64PodcastQuotes</a>, <a class="yellow-highlight" href="https://www.reddit.com/r/mega64/" target="_blank">/r/mega64</a><br />
+        <a class="yellow-highlight" href="https://www.algolia.com/" target="_blank">Algolia</a>, <a class="yellow-highlight" href="https://twitter.com/Mega64_Quotes" target="_blank">Mega64PodcastQuotes</a>, <a class="yellow-highlight" href="https://www.reddit.com/r/mega64/" target="_blank">/r/mega64</a><br />
         ---
       </p>
       <p>
@@ -129,6 +129,7 @@
 
   <!-- Algolia Script -->
   <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
   <script src="js/require.js"></script>
   <script src="js/algolia.js"></script>
 
