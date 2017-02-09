@@ -382,30 +382,6 @@ var json = [{
   "source":"source",
   "sourceLink":"#"
 },
-// {
-//   "id":"033",
-//   "characterClass":"Kevin_1",
-//   "characterName":"Kevin",
-//   "cast":"Kevin",
-//   "audio": [
-//
-//   ],
-//   "quote":"*insert Kevin quote here*",
-//   "source":"source",
-//   "sourceLink":"#"
-// },
-// {
-//   "id":"034",
-//   "characterClass":"z_sixtyFour",
-//   "characterName":"mega64",
-//   "cast":"Mega64",
-//   "audio": [
-//
-//   ],
-//   "quote":"*insert Mega64 group quote here",
-//   "source":"source",
-//   "sourceLink":"#"
-// },
 {
   "id":"035",
   "characterClass":"neo",
